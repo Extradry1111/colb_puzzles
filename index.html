@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐝 COLB Honey Puzzles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated Bee Background -->
+  <div id="bee-container" class="bee-container"></div>
+  
+  <!-- Honey Drips Effect -->
+  <div id="honey-drips" class="honey-drips"></div>
+
+  <!-- Main Menu -->
+  <div id="menu" class="menu">
+    <div class="hexagon-pattern"></div>
+    <div class="menu-content">
+      <h1 class="title">🐝 COLB Honey Puzzles 🍯</h1>
+      <p class="subtitle">Solve the puzzle and share results!</p>
+      
+      <div class="gallery">
+        <img src="images/1.jpg" alt="Puzzle 1" class="gallery-img">
+        <img src="images/2.jpg" alt="Puzzle 2" class="gallery-img">
+        <img src="images/3.jpg" alt="Puzzle 3" class="gallery-img">
+        <img src="images/4.jpg" alt="Puzzle 4" class="gallery-img">
+        <img src="images/5.jpg" alt="Puzzle 5" class="gallery-img">
+        <img src="images/6.jpg" alt="Puzzle 6" class="gallery-img">
+        <img src="images/7.jpg" alt="Puzzle 7" class="gallery-img">
+        <img src="images/8.jpg" alt="Puzzle 8" class="gallery-img">
+        <img src="images/9.jpg" alt="Puzzle 9" class="gallery-img">
+        <img src="images/10.jpg" alt="Puzzle 10" class="gallery-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game" class="game hidden">
+    <!-- Bee background for puzzle screen -->
+    <div id="game-bee-container" class="game-bee-container"></div>
+    <div class="honeycomb-bg"></div>
+    
+    <div class="game-header">
+      <h2 id="puzzle-title"> Honey Puzzle</h2>
+      <div class="timer-moves">
+        <div class="timer-box">
+          <span class="label"> Time</span>
+          <span id="timer" class="timer-value">0s</span>
+        </div>
+        <div class="moves-box">
+          <span class="label"> Moves</span>
+          <span id="moves" class="moves-value">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="puzzle-container">
+      <div id="puzzle" class="puzzle-grid"></div>
+      <div class="puzzle-glow"></div>
+    </div>
+
+    <div class="game-buttons">
+      <button id="shuffle-btn" class="btn btn-gold">🔀 Shuffle</button>
+      <button id="back-btn" class="btn btn-danger">← Back</button>
+    </div>
+
+    <div id="win-message" class="win-message hidden">
+      <div class="win-content">
+        <div class="confetti"></div>
+        <h2>🎉 HONEYCOMB COMPLETE! 🎉</h2>
+        <p>You solved it in <span id="final-time">0s</span> and <span id="final-moves">0</span> moves!</p>
+        <div class="bee-celebration">🐝✨🎊✨🐝</div>
+        <button onclick="backToMenu()" class="btn btn-gold">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

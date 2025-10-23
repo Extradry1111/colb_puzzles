@@ -1,0 +1,621 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 50%, #FF8C00 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* ==================== NONSTOP BEE ANIMATIONS ==================== */
+  .bee-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .bee {
+    position: absolute;
+    font-size: 2rem;
+    animation: beeFlyNonstop 12s infinite linear;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  }
+  
+  @keyframes beeFlyNonstop {
+    0% { 
+      transform: translateX(-50px) translateY(0) scaleX(1) rotate(0deg);
+    }
+    25% { 
+      transform: translateX(25vw) translateY(-15vh) scaleX(1) rotate(-15deg);
+    }
+    50% { 
+      transform: translateX(50vw) translateY(10vh) scaleX(-1) rotate(0deg);
+    }
+    75% { 
+      transform: translateX(75vw) translateY(-5vh) scaleX(-1) rotate(15deg);
+    }
+    100% { 
+      transform: translateX(110vw) translateY(0) scaleX(-1) rotate(0deg);
+    }
+  }
+  
+  /* ==================== HONEY DRIPS EFFECT ==================== */
+  .honey-drips {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .honey-drip {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(255, 193, 7, 0));
+    border-radius: 50%;
+    animation: dripFall 3s infinite ease-in;
+  }
+  
+  @keyframes dripFall {
+    0% {
+      top: -20px;
+      opacity: 1;
+    }
+    100% {
+      top: 100vh;
+      opacity: 0;
+    }
+  }
+  
+  /* ==================== HEXAGON PATTERN ==================== */
+  .hexagon-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(0, 0, 0, 0.03) 40px, rgba(0, 0, 0, 0.03) 80px),
+      repeating-linear-gradient(-60deg, transparent, transparent 40px, rgba(0, 0, 0, 0.03) 40px, rgba(0, 0, 0, 0.03) 80px),
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 0, 0, 0.03) 40px, rgba(0, 0, 0, 0.03) 80px);
+    opacity: 0.3;
+  }
+  
+  /* ==================== MENU ==================== */
+  .menu {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  
+  .menu-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: menuSlideIn 0.8s ease-out;
+  }
+  
+  @keyframes menuSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #000;
+    text-shadow: 
+      3px 3px 0 #FFD700,
+      6px 6px 0 #FFC107,
+      9px 9px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    animation: titleBounce 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes titleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  /* ==================== GALLERY (5x5 GRID) ==================== */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gallery-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 4px solid #000;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+  
+  .gallery-img::before {
+    content: '🐝';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+    opacity: 0;
+  }
+  
+  .gallery-img:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 
+      0 0 25px #FFD700,
+      0 0 50px #FFC107,
+      0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: #FFD700;
+    z-index: 10;
+  }
+  
+  .gallery-img:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  /* ==================== BUTTONS ==================== */
+  .btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+  
+  .btn:hover::before {
+    left: 100%;
+  }
+  
+  .btn-gold {
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    color: #000;
+    border: 3px solid #000;
+  }
+  
+  .btn-gold:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7);
+  }
+  
+  .btn-danger {
+    background: linear-gradient(135deg, #FF1744, #D32F2F);
+    color: #fff;
+    border: 3px solid #000;
+  }
+  
+  .btn-danger:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 23, 68, 0.7);
+  }
+  
+  /* ==================== GAME SCREEN ==================== */
+  .game {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  /* NONSTOP BEES ON GAME SCREEN */
+  .game-bee-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .game-bee {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: gameBeeFloat 15s infinite linear;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+  }
+  
+  @keyframes gameBeeFloat {
+    0% { 
+      transform: translate(-100px, 0) scaleX(1) rotate(0deg);
+    }
+    20% { 
+      transform: translate(20vw, -20vh) scaleX(1) rotate(-20deg);
+    }
+    40% { 
+      transform: translate(50vw, 10vh) scaleX(-1) rotate(0deg);
+    }
+    60% { 
+      transform: translate(80vw, -10vh) scaleX(-1) rotate(20deg);
+    }
+    80% {
+      transform: translate(100vw, 5vh) scaleX(-1) rotate(-10deg);
+    }
+    100% { 
+      transform: translate(120vw, 0) scaleX(-1) rotate(0deg);
+    }
+  }
+  
+  /* HONEYCOMB BACKGROUND */
+  .honeycomb-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+      repeating-linear-gradient(60deg, transparent, transparent 50px, rgba(255, 215, 0, 0.05) 50px, rgba(255, 215, 0, 0.05) 100px),
+      repeating-linear-gradient(-60deg, transparent, transparent 50px, rgba(255, 215, 0, 0.05) 50px, rgba(255, 215, 0, 0.05) 100px);
+    z-index: 0;
+  }
+  
+  .game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  #puzzle-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px #FFD700;
+    animation: titleGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes titleGlow {
+    0%, 100% {
+      text-shadow: 2px 2px 5px #FFD700;
+    }
+    50% {
+      text-shadow: 2px 2px 15px #FFC107, 0 0 20px #FFD700;
+    }
+  }
+  
+  .timer-moves {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .timer-box, .moves-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    padding: 15px 30px;
+    border-radius: 15px;
+    border: 3px solid #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: boxFloat 3s ease-in-out infinite;
+  }
+  
+  @keyframes boxFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .timer-value, .moves-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  /* ==================== PUZZLE GRID ==================== */
+  .puzzle-container {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .puzzle-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+    border-radius: 20px;
+    animation: glowPulse 3s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+  
+  .puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    border-radius: 20px;
+    border: 5px solid #000;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+  }
+  
+  .tile {
+    width: 120px;
+    height: 120px;
+    background-size: 360px 360px;
+    cursor: pointer;
+    border: 3px solid #000;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tile:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+  
+  .tile.empty {
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    position: relative;
+  }
+  
+  .tile.empty::after {
+    content: '🍯';
+    animation: honeyFloat 2s ease-in-out infinite;
+  }
+  
+  @keyframes honeyFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(10deg); }
+  }
+  
+  /* ==================== GAME BUTTONS ==================== */
+  .game-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* ==================== WIN MESSAGE ==================== */
+  .win-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+  
+  .win-content {
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    border: 5px solid #000;
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 0 60px rgba(255, 215, 0, 1);
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @keyframes popIn {
+    0% {
+      transform: scale(0) rotate(-180deg);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+    }
+  }
+  
+  .confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle, #FF1744 10%, transparent 10%),
+      radial-gradient(circle, #2196F3 10%, transparent 10%),
+      radial-gradient(circle, #4CAF50 10%, transparent 10%),
+      radial-gradient(circle, #FFC107 10%, transparent 10%);
+    background-size: 10% 10%;
+    background-position: 0% 0%, 20% 80%, 80% 10%, 40% 90%;
+    animation: confettiFall 5s infinite;
+    opacity: 0.6;
+  }
+  
+  @keyframes confettiFall {
+    0% { background-position: 0% 0%, 20% 0%, 80% 0%, 40% 0%; }
+    100% { background-position: 0% 100%, 20% 100%, 80% 100%, 40% 100%; }
+  }
+  
+  .win-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    animation: winTextBounce 0.8s ease-in-out infinite;
+  }
+  
+  @keyframes winTextBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  .win-content p {
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .bee-celebration {
+    font-size: 3rem;
+    margin: 20px 0;
+    animation: beeHappy 0.6s ease-in-out infinite;
+  }
+  
+  @keyframes beeHappy {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    50% { transform: scale(1.15) rotate(5deg); }
+  }
+  
+  /* ==================== UTILITIES ==================== */
+  .hidden {
+    display: none !important;
+  }
+  
+  @media (max-width: 1200px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2.5rem;
+    }
+  
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .gallery-img {
+      width: 140px;
+      height: 140px;
+    }
+  
+    .puzzle-grid {
+      gap: 5px;
+    }
+  
+    .tile {
+      width: 90px;
+      height: 90px;
+    }
+  }
